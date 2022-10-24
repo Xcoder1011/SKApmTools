@@ -1,0 +1,13 @@
+use_frameworks!
+
+platform :ios, '10.0'
+
+target 'SKApmTools_Example' do
+  pod 'SKApmTools', :path => '../'
+
+  target 'SKApmTools_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
