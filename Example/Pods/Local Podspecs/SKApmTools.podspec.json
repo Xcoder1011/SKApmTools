@@ -1,0 +1,22 @@
+{
+  "name": "SKApmTools",
+  "version": "0.1.0",
+  "summary": "A short description of SKApmTools.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/Xcoder1011/SKApmTools",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Xcoder1011": "shangkunwu@msn.com"
+  },
+  "source": {
+    "git": "https://github.com/Xcoder1011/SKApmTools.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "10.0"
+  },
+  "source_files": "SKApmTools/Classes/**/*"
+}

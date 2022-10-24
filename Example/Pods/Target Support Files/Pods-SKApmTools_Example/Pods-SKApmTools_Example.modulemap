@@ -1,0 +1,6 @@
+framework module Pods_SKApmTools_Example {
+  umbrella header "Pods-SKApmTools_Example-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,6 @@
+framework module SKApmTools {
+  umbrella header "SKApmTools-umbrella.h"
+
+  export *
+  module * { export * }
+}

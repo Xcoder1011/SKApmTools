@@ -8,6 +8,9 @@ APM性能优化相关（swift版本 ）：ANR卡顿监测、网络优化、内�
 [![License](https://img.shields.io/cocoapods/l/SKApmTools.svg?style=flat)](https://cocoapods.org/pods/SKApmTools)
 [![Platform](https://img.shields.io/cocoapods/p/SKApmTools.svg?style=flat)](https://cocoapods.org/pods/SKApmTools)
 
+APM性能优化相关（swift版本 ）：ANR卡顿监测、网络优化、内存监控、启动优化、常见crash防护、crash监控上报
+
+
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.

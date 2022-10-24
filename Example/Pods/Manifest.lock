@@ -1,0 +1,16 @@
+PODS:
+  - SKApmTools (0.1.0)
+
+DEPENDENCIES:
+  - SKApmTools (from `../`)
+
+EXTERNAL SOURCES:
+  SKApmTools:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  SKApmTools: 39e0c076fe3624ab1c6b8aaecf6cee46048a9cc0
+
+PODFILE CHECKSUM: 311f38a730aff2fe5e3080f0a735303286a291ab
+
+COCOAPODS: 1.11.3
