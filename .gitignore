@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Xcode
 #
 # gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
@@ -20,7 +19,7 @@ DerivedData/
 
 # Xcode
 build/
->>>>>>> 938d2e6 (Initial commit)
+
 *.pbxuser
 !default.pbxuser
 *.mode1v3
@@ -29,7 +28,7 @@ build/
 !default.mode2v3
 *.perspectivev3
 !default.perspectivev3
-<<<<<<< HEAD
+
 
 ## Obj-C/Swift specific
 *.hmap
@@ -97,7 +96,7 @@ fastlane/test_output
 # https://github.com/johnno1962/injectionforxcode
 
 iOSInjectionProject/
-=======
+
 xcuserdata/
 *.xccheckout
 *.moved-aside
@@ -121,4 +120,4 @@ Carthage/Build
 # `pod install` in .travis.yml
 #
 # Pods/
->>>>>>> 938d2e6 (Initial commit)
+
