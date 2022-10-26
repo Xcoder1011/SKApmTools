@@ -5,20 +5,13 @@
 //  Created by KUN on 2022/10/24.
 //
 
-/*
- 
- “N次卡顿超过阈值T”的判定策略:
- 一个时间段内卡顿的次数累计大于N时才触发采集和上报
- 
- 第一种：卡顿阈值T=200ms、卡顿次数N=1，可以判定为单次耗时较长的一次有效卡顿；
- 第一种：卡顿阈值T=60ms、卡顿次数N=5，可以判定为频次较多的一次有效卡顿。
- 
- */
 import Foundation
 
 open class SKANRMonitor: NSObject{
     
     @objc public static let sharedInstance = SKANRMonitor()
+    /// 单次耗时较长的卡顿阈值: 默认值为500ms，单位：毫秒
+    @objc public var singleTime: Int = 500
     
     fileprivate var observer: CFRunLoopObserver?
     
@@ -27,17 +20,8 @@ open class SKANRMonitor: NSObject{
     fileprivate var semaphore: DispatchSemaphore?
     
     fileprivate var underObserving: Bool = false
-    
     // 卡顿次数记录
     fileprivate var count: Int = 0
-    
-    /// 单次耗时较长的卡顿阈值: 默认值为200ms，单位：毫秒
-    @objc public var singleTime: Int = 500
-    
-    /// 频次较多的卡顿阈值: 默认值为60ms，单位：毫秒
-    @objc public var multiTime: Int = 60
-    /// 频次较多的卡顿次数: 默认值为5
-    @objc public var frequency: Int = 5
     
     @objc public func start() {
         if nil == self.observer {
@@ -51,16 +35,22 @@ open class SKANRMonitor: NSObject{
                 while(self.underObserving) {
                     if let activity = self.activity, let semaphore = self.semaphore {
                         SKANRMonitor.sharedInstance.logActivity(activity)
-                        let result = semaphore.wait(timeout: DispatchTime.now() + .milliseconds(self.multiTime))
+                        let result = semaphore.wait(timeout: DispatchTime.now() + .milliseconds(self.singleTime))
                         if result == .timedOut {
                             if activity == .beforeSources || activity == .afterWaiting {
-                                self.count += 1
-                                print("！！！！！卡顿了，第\(self.count)次=====>\(activity)")
-                                if (self.count == self.frequency) {
-                                    print("开始上报卡顿，第\(self.count)次=====>\(activity)")
-                                    self.count = 0
+                                let stackSize = Thread.main.stackSize
+                                print("监测到卡顿")
+//                                let callStackSymbols = Thread.callStackSymbols
+//                                for (index, symbol) in callStackSymbols.enumerated() {
+//                                    print("symbol【\(index)】: \(symbol)")
+//                                }
+                                let traces = SKStackTrace.stackTrace(of: Thread.main)
+                                for (index, symbol) in traces.enumerated() {
+                                    print("symbol【\(index)】: \(symbol.info)")
                                 }
                             }
+                        } else {
+                            self.count = 0
                         }
                     }
                 }
@@ -79,8 +69,9 @@ open class SKANRMonitor: NSObject{
     fileprivate func observerCallBack() -> CFRunLoopObserverCallBack {
         return {(observer, activity, pointer) in
             SKANRMonitor.sharedInstance.activity = activity
+            print("即将进入RunLoop")
             if let semaphore = SKANRMonitor.sharedInstance.semaphore {
-                let count = semaphore.signal()
+                semaphore.signal()
             }
         }
     }

@@ -29,7 +29,7 @@ class ViewController: UIViewController {
     }
     
     @objc func btnClicked(_ sender: UIButton) {
-        Thread.sleep(forTimeInterval: 1)
+        Thread.sleep(forTimeInterval: 2)
     }
 
     override func didReceiveMemoryWarning() {

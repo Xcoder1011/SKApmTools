@@ -10,6 +10,8 @@
 #endif
 #endif
 
+#import "mach_backtrace.h"
+#import "mach_port_util.h"
 
 FOUNDATION_EXPORT double SKApmToolsVersionNumber;
 FOUNDATION_EXPORT const unsigned char SKApmToolsVersionString[];

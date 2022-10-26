@@ -7,87 +7,97 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B0597C5B74F05B13DC4BD1C80FC3AA8 /* SKStackTrace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0837B01167A73FA2FB7297DC70046007 /* SKStackTrace.swift */; };
 		13175D218A71A3E810A7649C27F1D3E5 /* Pods-SKApmTools_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1CE7E011CAACEC824676418DDAF2E383 /* Pods-SKApmTools_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		61677DDF7D9B4D2FFB90A678CD6C4192 /* SKApmTools-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EB5EC65D528C764F6EADDED26AD7487 /* SKApmTools-dummy.m */; };
+		27C8B6162CC3F04E185BD3CD8D183951 /* mach_backtrace.h in Headers */ = {isa = PBXBuildFile; fileRef = 33FE758C1AEBF5E74B0D7659CC43A2A9 /* mach_backtrace.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		33272DB813797581958A05FBA3F09C52 /* SKApmTools-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 39E326DFE34F769FF5D7AE567D539696 /* SKApmTools-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4712A348812F1CD5F1DF6787378018DF /* SKANRMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505368A1C091705CA52EAFFBD066147F /* SKANRMonitor.swift */; };
+		572369BA143AE4AFA12BAA34C047EF49 /* SKStackSymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F060FA9CC0E16476291F3F45E48FE617 /* SKStackSymbol.swift */; };
+		67FBEE233D7CE89CBEF3DE13A18B017F /* SKApmTools-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C57599158F4B42B55FBA13F10747AC1 /* SKApmTools-dummy.m */; };
+		7B4D68FFCED6DD0771C0127F03849CE5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		7F1886D5C34D960DF77BFF9422D03A9E /* mach_port_util.h in Headers */ = {isa = PBXBuildFile; fileRef = FCDDF14098FFE07105860EC5CF9164A9 /* mach_port_util.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9124ABC23084292CBA2BA70E07E2AF36 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
-		AE176510651783CA15DBE355599404F3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
-		BC43916A29067E150008E279 /* SKANRMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC43916929067E150008E279 /* SKANRMonitor.swift */; };
+		A9544C377385D620CB3220EFE237A35E /* mach_backtrace.c in Sources */ = {isa = PBXBuildFile; fileRef = 959E8F5098E6BC4CA7E6D668216C4538 /* mach_backtrace.c */; };
+		BCB788223628D8581F62511F201DDAC2 /* mach_port_util.c in Sources */ = {isa = PBXBuildFile; fileRef = C2627A1BA413DE55A08D9FB9CB242038 /* mach_port_util.c */; };
 		C347A4501D7FB01792878CB50A729761 /* Pods-SKApmTools_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BCCA76C9E81417DA5EB65BE78D4C94 /* Pods-SKApmTools_Tests-dummy.m */; };
-		CC881988F6D4D5BAE0431ECBB21E53E8 /* ReplaceMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E003485C16D87481A5F2CEF8BFA2D6 /* ReplaceMe.swift */; };
 		CD11D3E6BE0483281A9B9168FC4D3F9E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
 		E97FAA763467ACEA2F14DE0394985E80 /* Pods-SKApmTools_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C2ADFA990F5DC0CFD2C5714D9DE9F13B /* Pods-SKApmTools_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F371D5B169717BF7D606D95DE5CB220D /* SKApmTools-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F807D72CCDF3FE79344EE0F07447060 /* SKApmTools-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F7A96734DD63A615D7E1730D62481EC1 /* Pods-SKApmTools_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E80E453350EA9B4D3C0896911A02201B /* Pods-SKApmTools_Example-dummy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		4449769D86FCC3A281F0B073B97ADA5D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = BA745D28C25C3CBCF4B5EC2BB813D2EE;
-			remoteInfo = SKApmTools;
-		};
-		F530F4FF00B858BB5F46DE603C17DCCC /* PBXContainerItemProxy */ = {
+		3E48A9C346E74210123770031DB5EE8C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 327F64871B1B602BF072620F3D2562ED;
 			remoteInfo = "Pods-SKApmTools_Example";
 		};
+		54BD45CEB996132761B8A0905D738F9E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BA745D28C25C3CBCF4B5EC2BB813D2EE;
+			remoteInfo = SKApmTools;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		03ED960D209983633A3B827A8CF495CD /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		0553FC94862F398FB004EC8001ECEC9A /* SKApmTools.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = SKApmTools.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		05CC8B0A1C6823EA0D6F88A4F7145E35 /* Pods-SKApmTools_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SKApmTools_Example-Info.plist"; sourceTree = "<group>"; };
-		09BF92D87E0F1F2764D16A75D6F31D7D /* SKApmTools-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SKApmTools-prefix.pch"; sourceTree = "<group>"; };
-		0EB5EC65D528C764F6EADDED26AD7487 /* SKApmTools-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SKApmTools-dummy.m"; sourceTree = "<group>"; };
+		0837B01167A73FA2FB7297DC70046007 /* SKStackTrace.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SKStackTrace.swift; sourceTree = "<group>"; };
 		0EFF3BE01979C9ECC2099832A9CB03EB /* Pods-SKApmTools_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SKApmTools_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		0F807D72CCDF3FE79344EE0F07447060 /* SKApmTools-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SKApmTools-umbrella.h"; sourceTree = "<group>"; };
+		1C57599158F4B42B55FBA13F10747AC1 /* SKApmTools-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SKApmTools-dummy.m"; sourceTree = "<group>"; };
 		1CE7E011CAACEC824676418DDAF2E383 /* Pods-SKApmTools_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SKApmTools_Tests-umbrella.h"; sourceTree = "<group>"; };
 		1E8663ECDCCE6DF59C2ABB24266B270F /* Pods-SKApmTools_Example */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-SKApmTools_Example"; path = Pods_SKApmTools_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FE3ED00B13EA41335576D66762FFEBB /* Pods-SKApmTools_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SKApmTools_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		29E003485C16D87481A5F2CEF8BFA2D6 /* ReplaceMe.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ReplaceMe.swift; path = SKApmTools/Classes/ReplaceMe.swift; sourceTree = "<group>"; };
 		3389A6DF761301684912AAC9A6E49297 /* Pods-SKApmTools_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SKApmTools_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		33FE758C1AEBF5E74B0D7659CC43A2A9 /* mach_backtrace.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = mach_backtrace.h; sourceTree = "<group>"; };
+		37CF01F0D77C930BA273A7A78EAD7906 /* SKApmTools.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SKApmTools.release.xcconfig; sourceTree = "<group>"; };
+		39E326DFE34F769FF5D7AE567D539696 /* SKApmTools-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SKApmTools-umbrella.h"; sourceTree = "<group>"; };
 		3D00C3F14B64C2E4310FDF1003350B9F /* Pods-SKApmTools_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SKApmTools_Example-frameworks.sh"; sourceTree = "<group>"; };
-		3F5AA4BAFDA18A2ED95F5E1B5FBE1597 /* SKApmTools.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SKApmTools.release.xcconfig; sourceTree = "<group>"; };
+		439AD0AE14E047B03AEC98E9CCC2F60D /* SKApmTools-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SKApmTools-Info.plist"; sourceTree = "<group>"; };
 		44BCCA76C9E81417DA5EB65BE78D4C94 /* Pods-SKApmTools_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SKApmTools_Tests-dummy.m"; sourceTree = "<group>"; };
 		46A41FA92B8F51571893CF933274E845 /* Pods-SKApmTools_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SKApmTools_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		478FAF31433D7F0E0FD4FF0796AC2A2A /* Pods-SKApmTools_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SKApmTools_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
+		505368A1C091705CA52EAFFBD066147F /* SKANRMonitor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SKANRMonitor.swift; sourceTree = "<group>"; };
+		57CA186CF988411FC2138AA7123F0720 /* SKApmTools-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SKApmTools-prefix.pch"; sourceTree = "<group>"; };
 		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		7E326F81DC15272F2BFD9F8812D610F7 /* SKApmTools.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = SKApmTools.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		77CD16BBEF62523DAF50B27FF2CB9920 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		7B01DC300BB661D5E1AC98D0E50150CA /* SKApmTools.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SKApmTools.modulemap; sourceTree = "<group>"; };
+		80F4EEFE4B592E496670A980A91C7490 /* SKApmTools.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SKApmTools.debug.xcconfig; sourceTree = "<group>"; };
 		820B80FBA0D67FB99796F7D33B0BC383 /* Pods-SKApmTools_Tests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-SKApmTools_Tests"; path = Pods_SKApmTools_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		85F34D091833F1B00E885E3208E20B99 /* SKApmTools-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SKApmTools-Info.plist"; sourceTree = "<group>"; };
 		8C8AC86AEE4B7E3AED5621C7284BAEAB /* Pods-SKApmTools_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-SKApmTools_Tests.modulemap"; sourceTree = "<group>"; };
+		959E8F5098E6BC4CA7E6D668216C4538 /* mach_backtrace.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; path = mach_backtrace.c; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9F0F726F79982B0B8C9E1F90C49844D9 /* Pods-SKApmTools_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SKApmTools_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		A4C8191A7449EC5EB684AEB59776066A /* Pods-SKApmTools_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-SKApmTools_Example.modulemap"; sourceTree = "<group>"; };
 		B811793FE70CA6781A595DE3882DBD33 /* Pods-SKApmTools_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SKApmTools_Example.release.xcconfig"; sourceTree = "<group>"; };
-		BC43916929067E150008E279 /* SKANRMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKANRMonitor.swift; sourceTree = "<group>"; };
-		BDD997C851AF6AC4A59AEEB057760768 /* SKApmTools.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SKApmTools.debug.xcconfig; sourceTree = "<group>"; };
+		C2627A1BA413DE55A08D9FB9CB242038 /* mach_port_util.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; path = mach_port_util.c; sourceTree = "<group>"; };
 		C2ADFA990F5DC0CFD2C5714D9DE9F13B /* Pods-SKApmTools_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SKApmTools_Example-umbrella.h"; sourceTree = "<group>"; };
 		C4964BDADCFCBB387B7B0F3482174415 /* SKApmTools */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SKApmTools; path = SKApmTools.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C624F39EB50683AA3F73271EBF91FF0E /* SKApmTools.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SKApmTools.modulemap; sourceTree = "<group>"; };
-		C6F915982222750833A10DD66018D0BF /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		DA0D4001986AA4671B6DB516877F3624 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		E80E453350EA9B4D3C0896911A02201B /* Pods-SKApmTools_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SKApmTools_Example-dummy.m"; sourceTree = "<group>"; };
 		EC721CCD0D1CA522C296D9C78743353D /* Pods-SKApmTools_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SKApmTools_Tests-Info.plist"; sourceTree = "<group>"; };
+		F060FA9CC0E16476291F3F45E48FE617 /* SKStackSymbol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SKStackSymbol.swift; sourceTree = "<group>"; };
+		FCDDF14098FFE07105860EC5CF9164A9 /* mach_port_util.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = mach_port_util.h; sourceTree = "<group>"; };
 		FE8B2BA351048DDF281F9481C6DE59AF /* Pods-SKApmTools_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SKApmTools_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		01614CBEAB026599FF4DDCF959E499F3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7B4D68FFCED6DD0771C0127F03849CE5 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5042D2E692570F7B19EACF4F2A1756C4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				CD11D3E6BE0483281A9B9168FC4D3F9E /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		507904B4947DBBB40DF0E046F886C868 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				AE176510651783CA15DBE355599404F3 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,6 +112,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		055B8193662B439D78DF407E3AE13BC0 /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				77CD16BBEF62523DAF50B27FF2CB9920 /* LICENSE */,
+				DA0D4001986AA4671B6DB516877F3624 /* README.md */,
+				0553FC94862F398FB004EC8001ECEC9A /* SKApmTools.podspec */,
+			);
+			name = Pod;
+			sourceTree = "<group>";
+		};
+		112101E67A7BFA1540C41C792FF0B711 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				7B01DC300BB661D5E1AC98D0E50150CA /* SKApmTools.modulemap */,
+				1C57599158F4B42B55FBA13F10747AC1 /* SKApmTools-dummy.m */,
+				439AD0AE14E047B03AEC98E9CCC2F60D /* SKApmTools-Info.plist */,
+				57CA186CF988411FC2138AA7123F0720 /* SKApmTools-prefix.pch */,
+				39E326DFE34F769FF5D7AE567D539696 /* SKApmTools-umbrella.h */,
+				80F4EEFE4B592E496670A980A91C7490 /* SKApmTools.debug.xcconfig */,
+				37CF01F0D77C930BA273A7A78EAD7906 /* SKApmTools.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/SKApmTools";
+			sourceTree = "<group>";
+		};
 		2F1698939978F34B640AF7E5F4B51CED /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -109,6 +144,35 @@
 				C1FB06437A36CC405C10A625973C3D5B /* Pods-SKApmTools_Tests */,
 			);
 			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		2F4387C686E518AA84A34A8C0CF941B1 /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				31F5D7D5D1800D211E1CE2186F5B9982 /* SKApmTools */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		31F5D7D5D1800D211E1CE2186F5B9982 /* SKApmTools */ = {
+			isa = PBXGroup;
+			children = (
+				45C3DB702D853171425B4C34053B3B66 /* ANR */,
+				055B8193662B439D78DF407E3AE13BC0 /* Pod */,
+				92821C20D4E46176323CB5C12720876A /* StackTrace */,
+				112101E67A7BFA1540C41C792FF0B711 /* Support Files */,
+			);
+			name = SKApmTools;
+			path = ../..;
+			sourceTree = "<group>";
+		};
+		45C3DB702D853171425B4C34053B3B66 /* ANR */ = {
+			isa = PBXGroup;
+			children = (
+				505368A1C091705CA52EAFFBD066147F /* SKANRMonitor.swift */,
+			);
+			name = ANR;
+			path = SKApmTools/Classes/ANR;
 			sourceTree = "<group>";
 		};
 		49D3CC9DBBEC67A561B5E26B4AD1ECA0 /* Pods-SKApmTools_Example */ = {
@@ -136,41 +200,18 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		7066668251B163FAD56754A1B4A7927B /* Support Files */ = {
+		92821C20D4E46176323CB5C12720876A /* StackTrace */ = {
 			isa = PBXGroup;
 			children = (
-				C624F39EB50683AA3F73271EBF91FF0E /* SKApmTools.modulemap */,
-				0EB5EC65D528C764F6EADDED26AD7487 /* SKApmTools-dummy.m */,
-				85F34D091833F1B00E885E3208E20B99 /* SKApmTools-Info.plist */,
-				09BF92D87E0F1F2764D16A75D6F31D7D /* SKApmTools-prefix.pch */,
-				0F807D72CCDF3FE79344EE0F07447060 /* SKApmTools-umbrella.h */,
-				BDD997C851AF6AC4A59AEEB057760768 /* SKApmTools.debug.xcconfig */,
-				3F5AA4BAFDA18A2ED95F5E1B5FBE1597 /* SKApmTools.release.xcconfig */,
+				959E8F5098E6BC4CA7E6D668216C4538 /* mach_backtrace.c */,
+				33FE758C1AEBF5E74B0D7659CC43A2A9 /* mach_backtrace.h */,
+				C2627A1BA413DE55A08D9FB9CB242038 /* mach_port_util.c */,
+				FCDDF14098FFE07105860EC5CF9164A9 /* mach_port_util.h */,
+				F060FA9CC0E16476291F3F45E48FE617 /* SKStackSymbol.swift */,
+				0837B01167A73FA2FB7297DC70046007 /* SKStackTrace.swift */,
 			);
-			name = "Support Files";
-			path = "Example/Pods/Target Support Files/SKApmTools";
-			sourceTree = "<group>";
-		};
-		78808EC93681267C9FEE9A09A181E3FB /* Pod */ = {
-			isa = PBXGroup;
-			children = (
-				03ED960D209983633A3B827A8CF495CD /* LICENSE */,
-				C6F915982222750833A10DD66018D0BF /* README.md */,
-				7E326F81DC15272F2BFD9F8812D610F7 /* SKApmTools.podspec */,
-			);
-			name = Pod;
-			sourceTree = "<group>";
-		};
-		99E4F0B4BE85D54A0BFC33D5EE20413A /* SKApmTools */ = {
-			isa = PBXGroup;
-			children = (
-				29E003485C16D87481A5F2CEF8BFA2D6 /* ReplaceMe.swift */,
-				BC43916829067D090008E279 /* ANR */,
-				78808EC93681267C9FEE9A09A181E3FB /* Pod */,
-				7066668251B163FAD56754A1B4A7927B /* Support Files */,
-			);
-			name = SKApmTools;
-			path = ../..;
+			name = StackTrace;
+			path = SKApmTools/Classes/StackTrace;
 			sourceTree = "<group>";
 		};
 		B218A1308F52EDAC91B1576557945F21 /* Products */ = {
@@ -181,14 +222,6 @@
 				C4964BDADCFCBB387B7B0F3482174415 /* SKApmTools */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		BC43916829067D090008E279 /* ANR */ = {
-			isa = PBXGroup;
-			children = (
-				BC43916929067E150008E279 /* SKANRMonitor.swift */,
-			);
-			path = ANR;
 			sourceTree = "<group>";
 		};
 		C1FB06437A36CC405C10A625973C3D5B /* Pods-SKApmTools_Tests */ = {
@@ -211,19 +244,11 @@
 			isa = PBXGroup;
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
-				D1FAFC6283C3C5F6C70DE549D70448B4 /* Development Pods */,
+				2F4387C686E518AA84A34A8C0CF941B1 /* Development Pods */,
 				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
 				B218A1308F52EDAC91B1576557945F21 /* Products */,
 				2F1698939978F34B640AF7E5F4B51CED /* Targets Support Files */,
 			);
-			sourceTree = "<group>";
-		};
-		D1FAFC6283C3C5F6C70DE549D70448B4 /* Development Pods */ = {
-			isa = PBXGroup;
-			children = (
-				99E4F0B4BE85D54A0BFC33D5EE20413A /* SKApmTools */,
-			);
-			name = "Development Pods";
 			sourceTree = "<group>";
 		};
 		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
@@ -237,19 +262,21 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		38C0B8A0EC6A2D1855AFACC54FA22BE7 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27C8B6162CC3F04E185BD3CD8D183951 /* mach_backtrace.h in Headers */,
+				7F1886D5C34D960DF77BFF9422D03A9E /* mach_port_util.h in Headers */,
+				33272DB813797581958A05FBA3F09C52 /* SKApmTools-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C3094D667FBE1F4EAD6221817BD22568 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				E97FAA763467ACEA2F14DE0394985E80 /* Pods-SKApmTools_Example-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CE1864A675A7D79A7A193542EF3A6703 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F371D5B169717BF7D606D95DE5CB220D /* SKApmTools-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,7 +303,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				E35B542A5D0228260ACCC6EC4A0C91A2 /* PBXTargetDependency */,
+				ABE79DB462F7C9F8AB63817176472BE1 /* PBXTargetDependency */,
 			);
 			name = "Pods-SKApmTools_Example";
 			productName = Pods_SKApmTools_Example;
@@ -295,7 +322,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				DCC54B59D4C75ACFE1048C8E834690EE /* PBXTargetDependency */,
+				5F3FA3D4A052F63FB235CE04C251C20E /* PBXTargetDependency */,
 			);
 			name = "Pods-SKApmTools_Tests";
 			productName = Pods_SKApmTools_Tests;
@@ -304,12 +331,12 @@
 		};
 		BA745D28C25C3CBCF4B5EC2BB813D2EE /* SKApmTools */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 70EB7B0A71B6AB689BF91A0C0191ECAA /* Build configuration list for PBXNativeTarget "SKApmTools" */;
+			buildConfigurationList = C3565964C7900638563E8FCDDA43A178 /* Build configuration list for PBXNativeTarget "SKApmTools" */;
 			buildPhases = (
-				CE1864A675A7D79A7A193542EF3A6703 /* Headers */,
-				327F94F4164A175C9186B70F9B976827 /* Sources */,
-				507904B4947DBBB40DF0E046F886C868 /* Frameworks */,
-				D263B93765562CFB94D6E945A540CFE3 /* Resources */,
+				38C0B8A0EC6A2D1855AFACC54FA22BE7 /* Headers */,
+				4DBE885CDC86A85C53FCB77360EAFF13 /* Sources */,
+				01614CBEAB026599FF4DDCF959E499F3 /* Frameworks */,
+				CFF960908ECC6E07A00F917236EE78B7 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -357,7 +384,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D263B93765562CFB94D6E945A540CFE3 /* Resources */ = {
+		CFF960908ECC6E07A00F917236EE78B7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -374,13 +401,16 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		327F94F4164A175C9186B70F9B976827 /* Sources */ = {
+		4DBE885CDC86A85C53FCB77360EAFF13 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CC881988F6D4D5BAE0431ECBB21E53E8 /* ReplaceMe.swift in Sources */,
-				61677DDF7D9B4D2FFB90A678CD6C4192 /* SKApmTools-dummy.m in Sources */,
-				BC43916A29067E150008E279 /* SKANRMonitor.swift in Sources */,
+				A9544C377385D620CB3220EFE237A35E /* mach_backtrace.c in Sources */,
+				BCB788223628D8581F62511F201DDAC2 /* mach_port_util.c in Sources */,
+				4712A348812F1CD5F1DF6787378018DF /* SKANRMonitor.swift in Sources */,
+				67FBEE233D7CE89CBEF3DE13A18B017F /* SKApmTools-dummy.m in Sources */,
+				572369BA143AE4AFA12BAA34C047EF49 /* SKStackSymbol.swift in Sources */,
+				0B0597C5B74F05B13DC4BD1C80FC3AA8 /* SKStackTrace.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -403,17 +433,17 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		DCC54B59D4C75ACFE1048C8E834690EE /* PBXTargetDependency */ = {
+		5F3FA3D4A052F63FB235CE04C251C20E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Pods-SKApmTools_Example";
 			target = 327F64871B1B602BF072620F3D2562ED /* Pods-SKApmTools_Example */;
-			targetProxy = F530F4FF00B858BB5F46DE603C17DCCC /* PBXContainerItemProxy */;
+			targetProxy = 3E48A9C346E74210123770031DB5EE8C /* PBXContainerItemProxy */;
 		};
-		E35B542A5D0228260ACCC6EC4A0C91A2 /* PBXTargetDependency */ = {
+		ABE79DB462F7C9F8AB63817176472BE1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SKApmTools;
 			target = BA745D28C25C3CBCF4B5EC2BB813D2EE /* SKApmTools */;
-			targetProxy = 4449769D86FCC3A281F0B073B97ADA5D /* PBXContainerItemProxy */;
+			targetProxy = 54BD45CEB996132761B8A0905D738F9E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -445,37 +475,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		37BF4734E07A029DB0CD547857A12627 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = BDD997C851AF6AC4A59AEEB057760768 /* SKApmTools.debug.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/SKApmTools/SKApmTools-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/SKApmTools/SKApmTools-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/SKApmTools/SKApmTools.modulemap";
-				PRODUCT_MODULE_NAME = SKApmTools;
-				PRODUCT_NAME = SKApmTools;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -644,38 +643,6 @@
 			};
 			name = Release;
 		};
-		BA6EFC9DAF8B334234FD867434E06B95 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3F5AA4BAFDA18A2ED95F5E1B5FBE1597 /* SKApmTools.release.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/SKApmTools/SKApmTools-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/SKApmTools/SKApmTools-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/SKApmTools/SKApmTools.modulemap";
-				PRODUCT_MODULE_NAME = SKApmTools;
-				PRODUCT_NAME = SKApmTools;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 		D299434AB35E7FD6F7921C8EF24742FF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -742,6 +709,69 @@
 			};
 			name = Debug;
 		};
+		DF3C476E17D7C080194B8F081F0070F2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 37CF01F0D77C930BA273A7A78EAD7906 /* SKApmTools.release.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/SKApmTools/SKApmTools-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SKApmTools/SKApmTools-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SKApmTools/SKApmTools.modulemap";
+				PRODUCT_MODULE_NAME = SKApmTools;
+				PRODUCT_NAME = SKApmTools;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		EB73D5B230EB6A6ED0E668CF98DBA097 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 80F4EEFE4B592E496670A980A91C7490 /* SKApmTools.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/SKApmTools/SKApmTools-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SKApmTools/SKApmTools-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SKApmTools/SKApmTools.modulemap";
+				PRODUCT_MODULE_NAME = SKApmTools;
+				PRODUCT_NAME = SKApmTools;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -754,20 +784,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		70EB7B0A71B6AB689BF91A0C0191ECAA /* Build configuration list for PBXNativeTarget "SKApmTools" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				37BF4734E07A029DB0CD547857A12627 /* Debug */,
-				BA6EFC9DAF8B334234FD867434E06B95 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		800D21B7F67E14EA219CA2FCF40E3C91 /* Build configuration list for PBXNativeTarget "Pods-SKApmTools_Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				944180355C6E4CF017380A08246DDEDC /* Debug */,
 				7C765B6C55AC3B6E6D0404B9B212837A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C3565964C7900638563E8FCDDA43A178 /* Build configuration list for PBXNativeTarget "SKApmTools" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EB73D5B230EB6A6ED0E668CF98DBA097 /* Debug */,
+				DF3C476E17D7C080194B8F081F0070F2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
