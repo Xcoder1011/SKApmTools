@@ -44,7 +44,7 @@ open class SKANRMonitor: NSObject{
 //                                for (index, symbol) in callStackSymbols.enumerated() {
 //                                    print("symbol【\(index)】: \(symbol)")
 //                                }
-                                let traces = SKStackTrace.stackTrace(of: Thread.main)
+                                let traces = SKBackTrace.backTrace(of: Thread.main)
                                 for (index, symbol) in traces.enumerated() {
                                     print("symbol【\(index)】: \(symbol.info)")
                                 }

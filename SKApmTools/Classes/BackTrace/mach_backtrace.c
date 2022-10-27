@@ -92,7 +92,7 @@
 int mach_backtrace(thread_t thread, void** stack, int maxSymbols) {
     _STRUCT_MCONTEXT machineContext;
     mach_msg_type_number_t stateCount = THREAD_STATE_COUNT;
-    
+    /// 根据线程标识 通过 thread_get_state 获取到线程寄存器状态结构体
     kern_return_t kret = thread_get_state(thread, THREAD_STATE_FLAVOR, (thread_state_t)&(machineContext.__ss), &stateCount);
     if (kret != KERN_SUCCESS) {
         return 0;
@@ -105,6 +105,7 @@ int mach_backtrace(thread_t thread, void** stack, int maxSymbols) {
 #endif
     void **currentFramePointer = (void **)machineContext.__ss.__framePointer;
     while (i < maxSymbols) {
+        /// 构建一个递归结构体，分别指向自己和 lr， 递归找到所有地址
         void **previousFramePointer = *currentFramePointer;
         if (!previousFramePointer) break;
         stack[i] = *(currentFramePointer+1);

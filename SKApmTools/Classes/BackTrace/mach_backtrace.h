@@ -5,6 +5,14 @@
 
 #include <mach/mach.h>
 
+#include <dlfcn.h>
+#include <pthread.h>
+#include <sys/types.h>
+#include <limits.h>
+#include <string.h>
+#include <mach-o/dyld.h>
+#include <mach-o/nlist.h>
+
 /**
  *  fill a backtrace call stack array of given thread
  *

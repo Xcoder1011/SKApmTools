@@ -8,7 +8,6 @@
 import Foundation
 
 public struct SKStackSymbol {
-    
     public let symbol: String
     public let file: String
     public let address: UInt
@@ -29,6 +28,16 @@ public struct SKStackSymbol {
             return String(format: "%-4d%-35s 0x%08lx %@ + %d \n", index, UInt(bitPattern: imageBuffer.baseAddress), address, demangledSymbol, offset)
 #endif
         }
+    }
+}
+
+public struct SKBacktraceEntry: Codable {
+    public let `class`: String
+    public let name: String
+    public let address: UInt
+    
+    public var log: String {
+        return "calss: \(self.class)    name:\(name)   address:\(String(address, radix: 16))\n"
     }
 }
 

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0B0597C5B74F05B13DC4BD1C80FC3AA8 /* SKStackTrace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0837B01167A73FA2FB7297DC70046007 /* SKStackTrace.swift */; };
+		0B0597C5B74F05B13DC4BD1C80FC3AA8 /* SKBackTrace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0837B01167A73FA2FB7297DC70046007 /* SKBackTrace.swift */; };
 		13175D218A71A3E810A7649C27F1D3E5 /* Pods-SKApmTools_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1CE7E011CAACEC824676418DDAF2E383 /* Pods-SKApmTools_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27C8B6162CC3F04E185BD3CD8D183951 /* mach_backtrace.h in Headers */ = {isa = PBXBuildFile; fileRef = 33FE758C1AEBF5E74B0D7659CC43A2A9 /* mach_backtrace.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		33272DB813797581958A05FBA3F09C52 /* SKApmTools-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 39E326DFE34F769FF5D7AE567D539696 /* SKApmTools-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -19,6 +19,7 @@
 		9124ABC23084292CBA2BA70E07E2AF36 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
 		A9544C377385D620CB3220EFE237A35E /* mach_backtrace.c in Sources */ = {isa = PBXBuildFile; fileRef = 959E8F5098E6BC4CA7E6D668216C4538 /* mach_backtrace.c */; };
 		BCB788223628D8581F62511F201DDAC2 /* mach_port_util.c in Sources */ = {isa = PBXBuildFile; fileRef = C2627A1BA413DE55A08D9FB9CB242038 /* mach_port_util.c */; };
+		BCF221142909457F00150CB5 /* SKDynamicSymbolic.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF221132909457F00150CB5 /* SKDynamicSymbolic.swift */; };
 		C347A4501D7FB01792878CB50A729761 /* Pods-SKApmTools_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BCCA76C9E81417DA5EB65BE78D4C94 /* Pods-SKApmTools_Tests-dummy.m */; };
 		CD11D3E6BE0483281A9B9168FC4D3F9E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
 		E97FAA763467ACEA2F14DE0394985E80 /* Pods-SKApmTools_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C2ADFA990F5DC0CFD2C5714D9DE9F13B /* Pods-SKApmTools_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -45,7 +46,7 @@
 /* Begin PBXFileReference section */
 		0553FC94862F398FB004EC8001ECEC9A /* SKApmTools.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = SKApmTools.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		05CC8B0A1C6823EA0D6F88A4F7145E35 /* Pods-SKApmTools_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SKApmTools_Example-Info.plist"; sourceTree = "<group>"; };
-		0837B01167A73FA2FB7297DC70046007 /* SKStackTrace.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SKStackTrace.swift; sourceTree = "<group>"; };
+		0837B01167A73FA2FB7297DC70046007 /* SKBackTrace.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SKBackTrace.swift; sourceTree = "<group>"; };
 		0EFF3BE01979C9ECC2099832A9CB03EB /* Pods-SKApmTools_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SKApmTools_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		1C57599158F4B42B55FBA13F10747AC1 /* SKApmTools-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SKApmTools-dummy.m"; sourceTree = "<group>"; };
 		1CE7E011CAACEC824676418DDAF2E383 /* Pods-SKApmTools_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SKApmTools_Tests-umbrella.h"; sourceTree = "<group>"; };
@@ -73,6 +74,7 @@
 		9F0F726F79982B0B8C9E1F90C49844D9 /* Pods-SKApmTools_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SKApmTools_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		A4C8191A7449EC5EB684AEB59776066A /* Pods-SKApmTools_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-SKApmTools_Example.modulemap"; sourceTree = "<group>"; };
 		B811793FE70CA6781A595DE3882DBD33 /* Pods-SKApmTools_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SKApmTools_Example.release.xcconfig"; sourceTree = "<group>"; };
+		BCF221132909457F00150CB5 /* SKDynamicSymbolic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKDynamicSymbolic.swift; sourceTree = "<group>"; };
 		C2627A1BA413DE55A08D9FB9CB242038 /* mach_port_util.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; path = mach_port_util.c; sourceTree = "<group>"; };
 		C2ADFA990F5DC0CFD2C5714D9DE9F13B /* Pods-SKApmTools_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SKApmTools_Example-umbrella.h"; sourceTree = "<group>"; };
 		C4964BDADCFCBB387B7B0F3482174415 /* SKApmTools */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SKApmTools; path = SKApmTools.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -159,7 +161,7 @@
 			children = (
 				45C3DB702D853171425B4C34053B3B66 /* ANR */,
 				055B8193662B439D78DF407E3AE13BC0 /* Pod */,
-				92821C20D4E46176323CB5C12720876A /* StackTrace */,
+				92821C20D4E46176323CB5C12720876A /* BackTrace */,
 				112101E67A7BFA1540C41C792FF0B711 /* Support Files */,
 			);
 			name = SKApmTools;
@@ -200,7 +202,7 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		92821C20D4E46176323CB5C12720876A /* StackTrace */ = {
+		92821C20D4E46176323CB5C12720876A /* BackTrace */ = {
 			isa = PBXGroup;
 			children = (
 				959E8F5098E6BC4CA7E6D668216C4538 /* mach_backtrace.c */,
@@ -208,10 +210,11 @@
 				C2627A1BA413DE55A08D9FB9CB242038 /* mach_port_util.c */,
 				FCDDF14098FFE07105860EC5CF9164A9 /* mach_port_util.h */,
 				F060FA9CC0E16476291F3F45E48FE617 /* SKStackSymbol.swift */,
-				0837B01167A73FA2FB7297DC70046007 /* SKStackTrace.swift */,
+				0837B01167A73FA2FB7297DC70046007 /* SKBackTrace.swift */,
+				BCF221132909457F00150CB5 /* SKDynamicSymbolic.swift */,
 			);
-			name = StackTrace;
-			path = SKApmTools/Classes/StackTrace;
+			name = BackTrace;
+			path = SKApmTools/Classes/BackTrace;
 			sourceTree = "<group>";
 		};
 		B218A1308F52EDAC91B1576557945F21 /* Products */ = {
@@ -409,8 +412,9 @@
 				BCB788223628D8581F62511F201DDAC2 /* mach_port_util.c in Sources */,
 				4712A348812F1CD5F1DF6787378018DF /* SKANRMonitor.swift in Sources */,
 				67FBEE233D7CE89CBEF3DE13A18B017F /* SKApmTools-dummy.m in Sources */,
+				BCF221142909457F00150CB5 /* SKDynamicSymbolic.swift in Sources */,
 				572369BA143AE4AFA12BAA34C047EF49 /* SKStackSymbol.swift in Sources */,
-				0B0597C5B74F05B13DC4BD1C80FC3AA8 /* SKStackTrace.swift in Sources */,
+				0B0597C5B74F05B13DC4BD1C80FC3AA8 /* SKBackTrace.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

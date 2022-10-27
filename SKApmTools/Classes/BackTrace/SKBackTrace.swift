@@ -1,5 +1,5 @@
 //
-//  SKStackTrace.swift
+//  SKBackTrace.swift
 //  SKApmTools
 //
 //  Created by KUN on 2022/10/26.
@@ -8,41 +8,38 @@
 import Foundation
 import MachO
 
-public class SKStackTrace {
+public class SKBackTrace {
     
     /// 获取指定线程的堆栈信息
-    public static func stackTrace(of thread: Thread) -> [SKStackSymbol] {
+    public static func backTrace(of thread: Thread) -> [SKStackSymbol] {
         let mach_thread = _machThread(from: thread)
         var symbols : [SKStackSymbol] = []
         let stackSize : UInt32 = 128
         let addrs = UnsafeMutablePointer<UnsafeMutableRawPointer?>.allocate(capacity: Int(stackSize))
         defer { addrs.deallocate() }
-        let frameCount = mach_stack_trace(mach_thread, stack: addrs, maxSymbols: Int32(stackSize))
+        let frameCount = mach_back_trace(mach_thread, stack: addrs, maxSymbols: Int32(stackSize))
         let buf = UnsafeBufferPointer(start: addrs, count: Int(frameCount))
-        
+        /// 解析堆栈地址
         for (index, addr) in buf.enumerated() {
             guard let addr = addr else { continue }
             let address = UInt(bitPattern: addr)
-            let symbol = SKStackSymbol(symbol: "not symbol",
-                                       file: "",
-                                       address: address,
-                                       symbolAddress: 0,
-                                       image: "dylib",
-                                       offset: 0,
-                                       index: index)
+            let symbol: SKStackSymbol
+            symbol = mach_O_parseSymbol(with: address, index: index)
             symbols.append(symbol)
         }
         return symbols
     }
     
     /// Thread to mach thread
+    /// 获取线程对应的线程标识
     private static func _machThread(from thread: Thread) -> thread_t {
         guard let (threads, count) = _machAllThread() else {
             return mach_thread_self()
         }
         
+        // 判断目标 thread, 如果是主线程，直接返回对应标识
         if thread.isMainThread {
-            return get_main_thread_t()
+            return get_main_thread_id()
         }
         
         var name : [Int8] = []
@@ -50,6 +47,9 @@ public class SKStackTrace {
         
         for i in 0 ..< count {
             let index = Int(i)
+            /// NSThread 取到的 name 和 pthread name 是一致的
+            /// 遍历 threads，通过 pthread_from_mach_thread_np 逐个获取 name 进行比对
+            /// 匹配则返回 NSThread 对应的线程标识
             if let p_thread = pthread_from_mach_thread_np((threads[index])) {
                 name.append(Int8(Character("\0").ascii ?? 0))
                 pthread_getname_np(p_thread, &name, MemoryLayout<Int8>.size * 256)
@@ -68,8 +68,10 @@ public class SKStackTrace {
     private static func _machAllThread() -> (thread_act_array_t, mach_msg_type_number_t)? {
         var thread_array : thread_act_array_t?
         var number_t : mach_msg_type_number_t = 0
+        /// 进程 ID
         let mach_task = mach_task_self_
         
+        /// 通过 task_threads 获取当前进程中线程列表 thread_act_array_t
         guard task_threads(mach_task, &(thread_array), &number_t) == KERN_SUCCESS else {
             return nil
         }
@@ -80,7 +82,7 @@ public class SKStackTrace {
 }
 
 @_silgen_name("mach_backtrace")
-public func mach_stack_trace(_ thread: thread_t,
+public func mach_back_trace(_ thread: thread_t,
                              stack: UnsafeMutablePointer<UnsafeMutableRawPointer?>,
                              maxSymbols: Int32) -> Int32
 
