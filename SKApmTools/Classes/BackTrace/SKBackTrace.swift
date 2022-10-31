@@ -11,33 +11,43 @@ import MachO
 public class SKBackTrace {
     
     /// 获取指定线程的堆栈信息
-    public static func backTrace(of thread: Thread) -> [SKStackSymbol] {
+    public static func backTraceInfoEntity(of thread: Thread) -> SKBacktraceEntity {
         let mach_thread = _machThread(from: thread)
-        var symbols : [SKStackSymbol] = []
         let stackSize : UInt32 = 128
         let addrs = UnsafeMutablePointer<UnsafeMutableRawPointer?>.allocate(capacity: Int(stackSize))
         defer { addrs.deallocate() }
         let frameCount = mach_back_trace(mach_thread, stack: addrs, maxSymbols: Int32(stackSize))
         let buf = UnsafeBufferPointer(start: addrs, count: Int(frameCount))
+        var validAddress = "", validFunction = "", traceContent = ""
+        var symbols : [SKStackSymbol] = []
+        let bundleName = Bundle.main.infoDictionary?["CFBundleName"] // like SKApmTools_Example
         /// 解析堆栈地址
         for (index, addr) in buf.enumerated() {
             guard let addr = addr else { continue }
             let address = UInt(bitPattern: addr)
-            let symbol: SKStackSymbol
-            symbol = mach_O_parseSymbol(with: address, index: index)
+            let symbol = mach_O_parseSymbol(with: address, index: index)
+            traceContent.append("\(symbol.info)")
             symbols.append(symbol)
+            if let bundleName = bundleName, validAddress.count == 0,  bundleName as! String == symbol.baseAddress {
+                validAddress = symbol.formatAddress
+                validFunction = symbol.demangledSymbol
+            }
         }
-        return symbols
+        if validAddress.count == 0 {
+            validAddress = symbols.first?.formatAddress ?? ""
+            validFunction = symbols.first?.demangledSymbol ?? ""
+        }
+        let entity = SKBacktraceEntity(threadId: UInt(mach_thread), validAddress: validAddress, validFunction: validFunction, traceContent: traceContent, traceSymbols: symbols)
+        return entity
     }
     
-    /// Thread to mach thread
     /// 获取线程对应的线程标识
     private static func _machThread(from thread: Thread) -> thread_t {
         guard let (threads, count) = _machAllThread() else {
             return mach_thread_self()
         }
         
-        // 判断目标 thread, 如果是主线程，直接返回对应标识
+        /// 判断目标 thread, 如果是主线程，直接返回对应标识
         if thread.isMainThread {
             return get_main_thread_id()
         }
@@ -83,8 +93,8 @@ public class SKBackTrace {
 
 @_silgen_name("mach_backtrace")
 public func mach_back_trace(_ thread: thread_t,
-                             stack: UnsafeMutablePointer<UnsafeMutableRawPointer?>,
-                             maxSymbols: Int32) -> Int32
+                            stack: UnsafeMutablePointer<UnsafeMutableRawPointer?>,
+                            maxSymbols: Int32) -> Int32
 
 extension Character {
     var isAscii: Bool {

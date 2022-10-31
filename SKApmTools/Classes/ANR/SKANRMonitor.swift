@@ -20,8 +20,12 @@ open class SKANRMonitor: NSObject{
     fileprivate var semaphore: DispatchSemaphore?
     
     fileprivate var underObserving: Bool = false
-    // 卡顿次数记录
+    /// 卡顿次数记录
     fileprivate var count: Int = 0
+    
+    fileprivate var pendingEntitys: [SKBacktraceEntity] = []
+    
+    fileprivate var pendingEntityDict: [String: SKBacktraceEntity] = [:]
     
     @objc public func start() {
         if nil == self.observer {
@@ -37,16 +41,22 @@ open class SKANRMonitor: NSObject{
                         SKANRMonitor.sharedInstance.logActivity(activity)
                         let result = semaphore.wait(timeout: DispatchTime.now() + .milliseconds(self.singleTime))
                         if result == .timedOut {
+                            if self.observer == nil {
+                                return
+                            }
                             if activity == .beforeSources || activity == .afterWaiting {
-                                let stackSize = Thread.main.stackSize
                                 print("监测到卡顿")
-//                                let callStackSymbols = Thread.callStackSymbols
-//                                for (index, symbol) in callStackSymbols.enumerated() {
-//                                    print("symbol【\(index)】: \(symbol)")
-//                                }
-                                let traces = SKBackTrace.backTrace(of: Thread.main)
-                                for (index, symbol) in traces.enumerated() {
-                                    print("symbol【\(index)】: \(symbol.info)")
+                                let entity = SKBackTrace.backTraceInfoEntity(of: Thread.main)
+                                let key = "\(entity.validAddress)_\(entity.validFunction)"
+                                if !self.pendingEntityDict.keys.contains(key) {
+                                    self.pendingEntityDict.updateValue(entity, forKey: key)
+                                    self.pendingEntitys.append(entity)
+                                    print(entity.threadId)
+                                    print(entity.validAddress)
+                                    print(entity.validFunction)
+                                    print(entity.traceContent)
+                                } else {
+                                    print("相同的卡顿只记录一次")
                                 }
                             }
                         } else {

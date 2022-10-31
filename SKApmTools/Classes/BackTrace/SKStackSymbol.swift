@@ -20,15 +20,39 @@ public struct SKStackSymbol {
         return _stdlib_demangleName(symbol)
     }
     
+    public var baseAddress: String {
+        return image.utf8CString.withUnsafeBufferPointer { (imageBuffer: UnsafeBufferPointer<CChar>) -> String in
+            return String(format: "%s", UInt(bitPattern: imageBuffer.baseAddress))
+        }
+    }
+    
+    public var formatAddress: String {
+#if arch(x86_64) || arch(arm64)
+        return String(format: "0x%016llx", address)
+#else
+        return String(format: "0x%08lx", address)
+#endif
+    }
+    
     public var info: String {
         return image.utf8CString.withUnsafeBufferPointer { (imageBuffer: UnsafeBufferPointer<CChar>) -> String in
+            let add = UInt(bitPattern: imageBuffer.baseAddress)
 #if arch(x86_64) || arch(arm64)
-            return String(format: "%-4ld%-35s 0x%016llx %@ + %ld \n", index, UInt(bitPattern: imageBuffer.baseAddress), address, demangledSymbol, offset)
+            return String(format: "%-4ld%-35s 0x%016llx  %@ + %ld \n", index, add, address, demangledSymbol, offset)
 #else
-            return String(format: "%-4d%-35s 0x%08lx %@ + %d \n", index, UInt(bitPattern: imageBuffer.baseAddress), address, demangledSymbol, offset)
+            return String(format: "%-4d%-35s 0x%08lx  %@ + %d \n", index, add, address, demangledSymbol, offset)
 #endif
         }
     }
+}
+
+
+public struct SKBacktraceEntity {
+    public let threadId: UInt  // 259
+    public let validAddress: String // address
+    public let validFunction: String // function
+    public let traceContent: String
+    public let traceSymbols: [SKStackSymbol]
 }
 
 public struct SKBacktraceEntry: Codable {
@@ -50,7 +74,7 @@ func _stdlib_demangleImpl(
     flags: UInt32
 ) -> UnsafeMutablePointer<CChar>?
 
-// Swift方法名还原
+/// Swift方法名还原
 private func _stdlib_demangleName(_ mangledName: String) -> String {
     return mangledName.utf8CString.withUnsafeBufferPointer {
         (mangledNameUTF8CStr) in
