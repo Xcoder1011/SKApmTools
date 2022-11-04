@@ -25,11 +25,21 @@ class ViewController: UIViewController {
             btn.addTarget(self, action: #selector(btnClicked(_:)) , for: .touchUpInside)
             view.addSubview(btn)
         }
-        SKANRMonitor.sharedInstance.start()
+        
+        SKANRMonitor.start()
+        let datas = SKANRMonitor.getPendingEntities()
+        print("待处理的卡顿数据数目: \(datas.count)")
+        SKANRMonitor.monitorCallback { curEntity, allEntities in
+            print("监测到卡顿: \(curEntity.validFunction)")
+            print(curEntity.threadId)
+            print(curEntity.occurenceTime)
+            print(curEntity.validAddress)
+            print(curEntity.traceContent)
+        }
     }
     
     @objc func btnClicked(_ sender: UIButton) {
-        Thread.sleep(forTimeInterval: 2)
+        Thread.sleep(forTimeInterval: 1)
     }
 
     override func didReceiveMemoryWarning() {

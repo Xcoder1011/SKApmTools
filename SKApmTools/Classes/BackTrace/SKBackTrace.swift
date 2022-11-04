@@ -37,7 +37,8 @@ public class SKBackTrace {
             validAddress = symbols.first?.formatAddress ?? ""
             validFunction = symbols.first?.demangledSymbol ?? ""
         }
-        let entity = SKBacktraceEntity(threadId: UInt(mach_thread), validAddress: validAddress, validFunction: validFunction, traceContent: traceContent, traceSymbols: symbols)
+        let time = Date.timeIntervalSinceReferenceDate
+        let entity = SKBacktraceEntity(threadId: UInt(mach_thread), validAddress: validAddress, validFunction: validFunction, traceContent: traceContent, traceSymbols: symbols, occurenceTime: time)
         return entity
     }
     

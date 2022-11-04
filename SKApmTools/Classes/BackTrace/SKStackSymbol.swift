@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct SKStackSymbol {
+public struct SKStackSymbol: Codable {
     public let symbol: String
     public let file: String
     public let address: UInt
@@ -47,12 +47,13 @@ public struct SKStackSymbol {
 }
 
 
-public struct SKBacktraceEntity {
+public struct SKBacktraceEntity: Codable {
     public let threadId: UInt  // 259
     public let validAddress: String // address
     public let validFunction: String // function
     public let traceContent: String
     public let traceSymbols: [SKStackSymbol]
+    public let occurenceTime: TimeInterval
 }
 
 public struct SKBacktraceEntry: Codable {
