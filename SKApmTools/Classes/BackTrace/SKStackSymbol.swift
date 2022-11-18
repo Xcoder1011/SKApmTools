@@ -7,26 +7,26 @@
 
 import Foundation
 
-public struct SKStackSymbol: Codable {
-    public let symbol: String
-    public let file: String
-    public let address: UInt
-    public let symbolAddress: UInt
-    public let image: String
-    public let offset: UInt
-    public let index: Int
+@objc public class SKStackSymbol: NSObject, Codable {
+    @objc public var symbol: String
+    @objc public var file: String
+    @objc public var address: UInt
+    @objc public var symbolAddress: UInt
+    @objc public var image: String
+    @objc public var offset: UInt
+    @objc public var index: Int
     
-    public var demangledSymbol: String {
+    @objc public var demangledSymbol: String {
         return _stdlib_demangleName(symbol)
     }
     
-    public var baseAddress: String {
+    @objc public var module: String {
         return image.utf8CString.withUnsafeBufferPointer { (imageBuffer: UnsafeBufferPointer<CChar>) -> String in
             return String(format: "%s", UInt(bitPattern: imageBuffer.baseAddress))
         }
     }
     
-    public var formatAddress: String {
+    @objc public var formatAddress: String {
 #if arch(x86_64) || arch(arm64)
         return String(format: "0x%016llx", address)
 #else
@@ -34,35 +34,43 @@ public struct SKStackSymbol: Codable {
 #endif
     }
     
-    public var info: String {
+    @objc public var info: String {
         return image.utf8CString.withUnsafeBufferPointer { (imageBuffer: UnsafeBufferPointer<CChar>) -> String in
-            let add = UInt(bitPattern: imageBuffer.baseAddress)
+            let module = UInt(bitPattern: imageBuffer.baseAddress)
 #if arch(x86_64) || arch(arm64)
-            return String(format: "%-4ld%-35s 0x%016llx  %@ + %ld \n", index, add, address, demangledSymbol, offset)
+            return String(format: "%-4ld%-35s 0x%016llx  %@ + %ld \n", index, module, address, demangledSymbol, offset)
 #else
-            return String(format: "%-4d%-35s 0x%08lx  %@ + %d \n", index, add, address, demangledSymbol, offset)
+            return String(format: "%-4d%-35s 0x%08lx  %@ + %d \n", index, module, address, demangledSymbol, offset)
 #endif
         }
     }
-}
-
-
-public struct SKBacktraceEntity: Codable {
-    public let threadId: UInt  // 259
-    public let validAddress: String // address
-    public let validFunction: String // function
-    public let traceContent: String
-    public let traceSymbols: [SKStackSymbol]
-    public let occurenceTime: TimeInterval
-}
-
-public struct SKBacktraceEntry: Codable {
-    public let `class`: String
-    public let name: String
-    public let address: UInt
     
-    public var log: String {
-        return "calss: \(self.class)    name:\(name)   address:\(String(address, radix: 16))\n"
+    init(symbol: String, file: String, address: UInt, symbolAddress: UInt, image: String, offset: UInt, index: Int) {
+        self.symbol = symbol
+        self.file = file
+        self.address = address
+        self.symbolAddress = symbolAddress
+        self.image = image
+        self.offset = offset
+        self.index = index
+    }
+}
+
+@objc public class SKBacktraceEntity: NSObject, Codable {
+    @objc public var threadId: UInt  // 259
+    @objc public var validAddress: String // address
+    @objc public var validFunction: String // function
+    @objc public var traceContent: String
+    @objc public var traceSymbols: [SKStackSymbol]
+    @objc public var occurenceTime: TimeInterval
+    
+    init(threadId: UInt, validAddress: String, validFunction: String, traceContent: String, traceSymbols: [SKStackSymbol], occurenceTime: TimeInterval) {
+        self.threadId = threadId
+        self.validAddress = validAddress
+        self.validFunction = validFunction
+        self.traceContent = traceContent
+        self.traceSymbols = traceSymbols
+        self.occurenceTime = occurenceTime
     }
 }
 

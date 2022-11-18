@@ -7,7 +7,7 @@
 
 import Foundation
 
-open class SKANRMonitor: NSObject{
+@objc open class SKANRMonitor: NSObject{
     
     @objc public static let sharedInstance = SKANRMonitor()
     /// 单次耗时较长的卡顿阈值: 默认值为300ms，单位：毫秒
@@ -25,7 +25,7 @@ open class SKANRMonitor: NSObject{
     /// 卡顿次数记录
     fileprivate var count: Int = 0
     
-    fileprivate var pendingEntities: [SKBacktraceEntity] = []
+    @objc public var pendingEntities: [SKBacktraceEntity] = []
     
     fileprivate var pendingEntityDict: [String: SKBacktraceEntity] = [:]
     
@@ -36,7 +36,7 @@ open class SKANRMonitor: NSObject{
     fileprivate var filePath: String? {
         get {
             let path = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true).first as NSString?
-            if let filePath = path?.appendingPathComponent("wd_apm_anr.archive") {
+            if let filePath = path?.appendingPathComponent("sk_apm_anr.archive") {
                 return filePath
             }
             return nil
@@ -58,21 +58,21 @@ open class SKANRMonitor: NSObject{
     }
     
     /// 监测到一个卡顿回调
-    public class func monitorCallback(_ callback: @escaping MonitorCallback) {
+    @objc public class func monitorCallback(_ callback: @escaping MonitorCallback) {
         SKANRMonitor.sharedInstance.callback = callback
     }
     
     /// 获取卡顿数据
-    public class func getPendingEntities() -> [SKBacktraceEntity] {
+    @objc public class func getPendingEntities() -> [SKBacktraceEntity] {
         return SKANRMonitor.sharedInstance.pendingEntities
     }
     
     /// 清理卡顿数据
-    public class func clearPendingEntities() {
+    @objc public class func clearPendingEntities() {
         SKANRMonitor.sharedInstance._clearEntities()
     }
     
-    public func _clearEntities() {
+    private func _clearEntities() {
         os_unfair_lock_lock(&lock)
         pendingEntities.removeAll()
         pendingEntityDict.removeAll()
@@ -118,6 +118,10 @@ open class SKANRMonitor: NSObject{
     }
     
     private func handleEntity(_ entity: SKBacktraceEntity) {
+        // filter invalid data
+        if entity.validFunction == "main" {
+            return
+        }
         let key = "\(entity.validAddress)_\(entity.validFunction)"
         if !self.pendingEntityDict.keys.contains(key) {
             os_unfair_lock_lock(&lock)
@@ -158,7 +162,7 @@ open class SKANRMonitor: NSObject{
         }
     }
     
-    fileprivate func observerCallBack() -> CFRunLoopObserverCallBack {
+    private func observerCallBack() -> CFRunLoopObserverCallBack {
         return {(observer, activity, pointer) in
             SKANRMonitor.sharedInstance.activity = activity
             if let semaphore = SKANRMonitor.sharedInstance.semaphore {

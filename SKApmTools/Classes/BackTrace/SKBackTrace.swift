@@ -17,26 +17,29 @@ public class SKBackTrace {
         let addrs = UnsafeMutablePointer<UnsafeMutableRawPointer?>.allocate(capacity: Int(stackSize))
         defer { addrs.deallocate() }
         let frameCount = mach_back_trace(mach_thread, stack: addrs, maxSymbols: Int32(stackSize))
-        let buf = UnsafeBufferPointer(start: addrs, count: Int(frameCount))
         var validAddress = "", validFunction = "", traceContent = ""
         var symbols : [SKStackSymbol] = []
-        let bundleName = Bundle.main.infoDictionary?["CFBundleName"] // like SKApmTools_Example
+        let info = Bundle.main.infoDictionary
+        let bundleName = "\(info?["CFBundleExecutable"] ?? "")_\(info?["CFBundleName"] ?? "")"// like SKApmTools_Example
+       
+        let buf = UnsafeBufferPointer(start: addrs, count: Int(frameCount))
         /// 解析堆栈地址
         for (index, addr) in buf.enumerated() {
             guard let addr = addr else { continue }
-            let address = UInt(bitPattern: addr)
-            let symbol = mach_O_parseSymbol(with: address, index: index)
+            let symbol = mach_O_parseSymbol(with: addr, index: index)
             traceContent.append("\(symbol.info)")
             symbols.append(symbol)
-            if let bundleName = bundleName, validAddress.count == 0,  bundleName as! String == symbol.baseAddress {
+            let demangledSymbol = symbol.demangledSymbol
+            if validFunction.count == 0, demangledSymbol.count > 0, bundleName.contains(symbol.module) {
                 validAddress = symbol.formatAddress
-                validFunction = symbol.demangledSymbol
+                validFunction = demangledSymbol
             }
         }
-        if validAddress.count == 0 {
+        if validFunction.count == 0 {
             validAddress = symbols.first?.formatAddress ?? ""
             validFunction = symbols.first?.demangledSymbol ?? ""
         }
+
         let time = Date.timeIntervalSinceReferenceDate
         let entity = SKBacktraceEntity(threadId: UInt(mach_thread), validAddress: validAddress, validFunction: validFunction, traceContent: traceContent, traceSymbols: symbols, occurenceTime: time)
         return entity
@@ -92,10 +95,16 @@ public class SKBackTrace {
     
 }
 
+/// 声明C的符号
 @_silgen_name("mach_backtrace")
 public func mach_back_trace(_ thread: thread_t,
                             stack: UnsafeMutablePointer<UnsafeMutableRawPointer?>,
                             maxSymbols: Int32) -> Int32
+
+@_silgen_name("backtrace_symbols")
+private func backtrace_symbols(_ stack: UnsafePointer<UnsafeMutableRawPointer?>!, _ frame: Int32) -> UnsafeMutablePointer<UnsafeMutablePointer<Int8>?>!
+
+
 
 extension Character {
     var isAscii: Bool {

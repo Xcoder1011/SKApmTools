@@ -30,7 +30,11 @@ TODO: Add long description of the pod here.
 
   s.ios.deployment_target = '10.0'
 
-  s.source_files = 'SKApmTools/Classes/**/*'
+  s.source_files = 'SKApmTools/Classes/**/*.{swift,h,c}'
+  
+  s.pod_target_xcconfig = {
+    "DEFINES_MODULE" => "YES"
+  }
   
   # s.resource_bundles = {
   #   'SKApmTools' => ['SKApmTools/Assets/*.png']

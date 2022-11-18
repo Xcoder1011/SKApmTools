@@ -11,9 +11,11 @@ import Foundation
 public private(set) var _appASLR : Int = 0
 
 /// 根据 Mach-O 符号表 解析符号
-func mach_O_parseSymbol(with address: UInt, index: Int) -> SKStackSymbol {
+func mach_O_parseSymbol(with addr: UnsafeMutableRawPointer, index: Int) -> SKStackSymbol {
     var info = dl_info()
-    sk_dladdr(address, &info)
+    let address = UInt(bitPattern: addr)
+    // sk_dladdr(address, &info)
+    dladdr(addr, &info)
     
     return SKStackSymbol(symbol: _symbol(info: info),
                        file: _dli_fname(with: info),
@@ -22,11 +24,6 @@ func mach_O_parseSymbol(with address: UInt, index: Int) -> SKStackSymbol {
                        image: _image(info: info),
                        offset: _offset(info: info, address: address),
                        index: index)
-}
-
-/// 从动态符号表查找符号
-private func _dynamicParseSymbol(with address: UInt, aslr: Int) -> SKBacktraceEntry? {
-    return nil
 }
 
 /// the symbol nearest the address
