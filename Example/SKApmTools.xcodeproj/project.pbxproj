@@ -13,6 +13,9 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
+		BC7F775D2930A4D5009EEBBB /* TestLoadImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7F775C2930A4D5009EEBBB /* TestLoadImageController.swift */; };
+		BCAC2D4F293390D3001AD746 /* test_nav.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BCAC2D4E293390D3001AD746 /* test_nav.jpg */; };
+		BCAC2D51293390E7001AD746 /* test_bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BCAC2D50293390E7001AD746 /* test_bg.jpg */; };
 		F0C6B8FBC472D12CA3BB1F8A /* Pods_SKApmTools_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BEF9F7CC1F42865D6943A18 /* Pods_SKApmTools_Tests.framework */; };
 		F2A83B1514E91B45BF863934 /* Pods_SKApmTools_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5041EE459CFA300E4A81FA37 /* Pods_SKApmTools_Example.framework */; };
 /* End PBXBuildFile section */
@@ -41,6 +44,9 @@
 		607FACE51AFB9204008FA782 /* SKApmTools_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SKApmTools_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
+		BC7F775C2930A4D5009EEBBB /* TestLoadImageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestLoadImageController.swift; sourceTree = "<group>"; };
+		BCAC2D4E293390D3001AD746 /* test_nav.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test_nav.jpg; sourceTree = "<group>"; };
+		BCAC2D50293390E7001AD746 /* test_bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test_bg.jpg; sourceTree = "<group>"; };
 		BF4772EE6E8272398D769068 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		C8F8091C3D339A6776660E47 /* Pods-SKApmTools_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SKApmTools_Example.release.xcconfig"; path = "Target Support Files/Pods-SKApmTools_Example/Pods-SKApmTools_Example.release.xcconfig"; sourceTree = "<group>"; };
 		EB2FD992DB3FE4743FB0FB73 /* Pods-SKApmTools_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SKApmTools_Tests.release.xcconfig"; path = "Target Support Files/Pods-SKApmTools_Tests/Pods-SKApmTools_Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -93,8 +99,10 @@
 		607FACD21AFB9204008FA782 /* Example for SKApmTools */ = {
 			isa = PBXGroup;
 			children = (
+				BCAC2D4129338D38001AD746 /* testImages */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
+				BC7F775C2930A4D5009EEBBB /* TestLoadImageController.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
@@ -146,6 +154,15 @@
 				3BEF9F7CC1F42865D6943A18 /* Pods_SKApmTools_Tests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BCAC2D4129338D38001AD746 /* testImages */ = {
+			isa = PBXGroup;
+			children = (
+				BCAC2D50293390E7001AD746 /* test_bg.jpg */,
+				BCAC2D4E293390D3001AD746 /* test_nav.jpg */,
+			);
+			name = testImages;
 			sourceTree = "<group>";
 		};
 		BF3832BB9C7D4852B3389C89 /* Pods */ = {
@@ -246,8 +263,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCAC2D51293390E7001AD746 /* test_bg.jpg in Resources */,
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
+				BCAC2D4F293390D3001AD746 /* test_nav.jpg in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -313,10 +332,12 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-SKApmTools_Example/Pods-SKApmTools_Example-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/SKApmTools/SKApmTools.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SKApmTools.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -331,6 +352,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC7F775D2930A4D5009EEBBB /* TestLoadImageController.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 			);

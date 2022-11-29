@@ -18,5 +18,13 @@
   "platforms": {
     "ios": "10.0"
   },
-  "source_files": "SKApmTools/Classes/**/*"
+  "source_files": "SKApmTools/Classes/**/*.{swift,h,c}",
+  "pod_target_xcconfig": {
+    "DEFINES_MODULE": "YES"
+  },
+  "dependencies": {
+    "Kingfisher": [
+
+    ]
+  }
 }

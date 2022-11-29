@@ -13,8 +13,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let titles = ["模拟卡顿","网络监控","日志查询","模拟Crash"]
+        let titles = ["模拟卡顿","网络监控","日志查询","模拟Crash", "图片检测"]
         for i in 0 ..< titles.count {
             let width = 120
             let height = 45
@@ -39,7 +38,15 @@ class ViewController: UIViewController {
     }
     
     @objc func btnClicked(_ sender: UIButton) {
-        Thread.sleep(forTimeInterval: 1)
+        if let title = sender.title(for: .normal) {
+            if (title.elementsEqual("图片检测")) {
+                print("图片检测")
+                let ctl = TestLoadImageController()
+                self.navigationController?.pushViewController(ctl, animated: true)
+            } else {
+                Thread.sleep(forTimeInterval: 1)
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {

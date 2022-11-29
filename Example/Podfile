@@ -7,7 +7,6 @@ target 'SKApmTools_Example' do
 
   target 'SKApmTools_Tests' do
     inherit! :search_paths
-
     
   end
 end

@@ -1,16 +1,23 @@
 PODS:
-  - SKApmTools (0.1.0)
+  - Kingfisher (6.3.1)
+  - SKApmTools (0.1.0):
+    - Kingfisher
 
 DEPENDENCIES:
   - SKApmTools (from `../`)
+
+SPEC REPOS:
+  trunk:
+    - Kingfisher
 
 EXTERNAL SOURCES:
   SKApmTools:
     :path: "../"
 
 SPEC CHECKSUMS:
-  SKApmTools: 39e0c076fe3624ab1c6b8aaecf6cee46048a9cc0
+  Kingfisher: 016c8b653a35add51dd34a3aba36b580041acc74
+  SKApmTools: 1cdc19b3bbda3615500e79450155c4eca5d4594f
 
-PODFILE CHECKSUM: 311f38a730aff2fe5e3080f0a735303286a291ab
+PODFILE CHECKSUM: ef423484222a246d65153af8f35943a888efe5a3
 
 COCOAPODS: 1.11.3
