@@ -16,9 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        UIImageView.initializeOnceSwift()
-//        UIImage.initializeOnceSwift()
-
         let root = UINavigationController(rootViewController: ViewController())
         root.view.backgroundColor = .white
         window?.rootViewController = root

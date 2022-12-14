@@ -24,7 +24,7 @@ class ViewController: UIViewController {
             btn.addTarget(self, action: #selector(btnClicked(_:)) , for: .touchUpInside)
             view.addSubview(btn)
         }
-        
+        // 1.开启卡顿监测
         SKANRMonitor.start()
         let datas = SKANRMonitor.getPendingEntities()
         print("待处理的卡顿数据数目: \(datas.count)")
@@ -40,7 +40,8 @@ class ViewController: UIViewController {
     @objc func btnClicked(_ sender: UIButton) {
         if let title = sender.title(for: .normal) {
             if (title.elementsEqual("图片检测")) {
-                print("图片检测")
+                // 2.开启图片尺寸检查
+                SKImageMonitor.start()
                 let ctl = TestLoadImageController()
                 self.navigationController?.pushViewController(ctl, animated: true)
             } else {

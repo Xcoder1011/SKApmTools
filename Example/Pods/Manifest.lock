@@ -1,6 +1,13 @@
 PODS:
   - Kingfisher (6.3.1)
-  - SKApmTools (0.1.0):
+  - SKApmTools (0.1.1):
+    - SKApmTools/ANR (= 0.1.1)
+    - SKApmTools/BackTrace (= 0.1.1)
+    - SKApmTools/ImageTool (= 0.1.1)
+  - SKApmTools/ANR (0.1.1):
+    - SKApmTools/BackTrace
+  - SKApmTools/BackTrace (0.1.1)
+  - SKApmTools/ImageTool (0.1.1):
     - Kingfisher
 
 DEPENDENCIES:
@@ -16,7 +23,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Kingfisher: 016c8b653a35add51dd34a3aba36b580041acc74
-  SKApmTools: 1cdc19b3bbda3615500e79450155c4eca5d4594f
+  SKApmTools: 72d09797ece888421c8930658e3c67c500dc2d72
 
 PODFILE CHECKSUM: ef423484222a246d65153af8f35943a888efe5a3
 

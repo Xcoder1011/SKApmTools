@@ -7,7 +7,7 @@
 
 import Foundation
 
-@objc open class SKANRMonitor: NSObject{
+@objc open class SKANRMonitor: NSObject {
     
     @objc public static let sharedInstance = SKANRMonitor()
     /// 单次耗时较长的卡顿阈值: 默认值为300ms，单位：毫秒
