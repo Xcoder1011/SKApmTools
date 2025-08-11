@@ -8,42 +8,39 @@
 import Foundation
 
 @objc open class SKANRMonitor: NSObject {
-    
     @objc public static let sharedInstance = SKANRMonitor()
     /// 单次耗时较长的卡顿阈值: 默认值为300ms，单位：毫秒
     @objc public var singleTime: Int = 300
     
-    fileprivate var observer: CFRunLoopObserver?
+    public typealias MonitorCallback = (_ curEntity: SKBacktraceEntity, _ allEntities: [SKBacktraceEntity]) -> Void
+
+    private var observer: CFRunLoopObserver?
     
-    fileprivate var activity: CFRunLoopActivity?
+    private var activity: CFRunLoopActivity?
     
-    fileprivate var lock = os_unfair_lock()
+    private var lock = os_unfair_lock()
     
-    fileprivate var semaphore: DispatchSemaphore?
+    private var semaphore: DispatchSemaphore?
     
-    fileprivate var underObserving: Bool = false
+    private var underObserving: Bool = false
     /// 卡顿次数记录
-    fileprivate var count: Int = 0
+    private var count: Int = 0
     
     @objc public var pendingEntities: [SKBacktraceEntity] = []
     
-    fileprivate var pendingEntityDict: [String: SKBacktraceEntity] = [:]
+    private var pendingEntityDict: [String: SKBacktraceEntity] = [:]
     
-    public typealias MonitorCallback = (_ curEntity: SKBacktraceEntity, _ allEntities: [SKBacktraceEntity]) -> Void
+    private var callback: MonitorCallback?
     
-    fileprivate var callback: MonitorCallback?
-    
-    fileprivate var filePath: String? {
-        get {
-            let path = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true).first as NSString?
-            if let filePath = path?.appendingPathComponent("sk_apm_anr.archive") {
-                return filePath
-            }
-            return nil
+    private var filePath: String? {
+        let path = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true).first as NSString?
+        if let filePath = path?.appendingPathComponent("sk_apm_anr.archive") {
+            return filePath
         }
+        return nil
     }
     
-    public override init() {
+    override public init() {
         super.init()
         readDataFromDisk()
     }
@@ -52,6 +49,7 @@ import Foundation
     @objc public class func start() {
         SKANRMonitor.sharedInstance.start()
     }
+
     /// 停止监测
     @objc public class func stop() {
         SKANRMonitor.sharedInstance.stop()
@@ -69,10 +67,12 @@ import Foundation
     
     /// 清理卡顿数据
     @objc public class func clearPendingEntities() {
-        SKANRMonitor.sharedInstance._clearEntities()
+        SKANRMonitor.sharedInstance.clearEntities()
     }
-    
-    private func _clearEntities() {
+}
+
+private extension SKANRMonitor {
+    func clearEntities() {
         os_unfair_lock_lock(&lock)
         pendingEntities.removeAll()
         pendingEntityDict.removeAll()
@@ -88,8 +88,8 @@ import Foundation
         os_unfair_lock_unlock(&lock)
     }
     
-    private func start() {
-        if nil == self.observer {
+    func start() {
+        if self.observer == nil {
             underObserving = true
             semaphore = DispatchSemaphore(value: 1)
             var context = CFRunLoopObserverContext(version: 0, info: nil, retain: nil, release: nil, copyDescription: nil)
@@ -97,7 +97,7 @@ import Foundation
             CFRunLoopAddObserver(CFRunLoopGetMain(), observer, CFRunLoopMode.commonModes)
             
             Thread.detachNewThread { [self] in
-                while(underObserving) {
+                while underObserving {
                     if let activity = activity, let semaphore = semaphore {
                         let result = semaphore.wait(timeout: DispatchTime.now() + .milliseconds(singleTime))
                         if result == .timedOut {
@@ -117,7 +117,7 @@ import Foundation
         }
     }
     
-    private func handleEntity(_ entity: SKBacktraceEntity) {
+    func handleEntity(_ entity: SKBacktraceEntity) {
         // filter invalid data
         if entity.validFunction == "main" {
             return
@@ -126,7 +126,7 @@ import Foundation
         if !self.pendingEntityDict.keys.contains(key) {
             os_unfair_lock_lock(&lock)
             // limit cache count 50
-            if (pendingEntities.count >= 50) {
+            if pendingEntities.count >= 50 {
                 let removeEntity = pendingEntities.removeLast()
                 let removeKey = "\(removeEntity.validAddress)_\(removeEntity.validFunction)"
                 self.pendingEntityDict.removeValue(forKey: removeKey)
@@ -139,9 +139,8 @@ import Foundation
                 do {
                     print("SKANRMonitor write data to filePath = \(filePath)")
                     let data = try PropertyListEncoder().encode(self.pendingEntities)
-                    try data.write(to:  URL(fileURLWithPath: filePath))
-                }
-                catch {
+                    try data.write(to: URL(fileURLWithPath: filePath))
+                } catch {
                     print("SKANRMonitor write data to filePath error = \(error.localizedDescription)")
                 }
             }
@@ -154,16 +153,16 @@ import Foundation
         }
     }
     
-    private func stop() {
-        if nil != self.observer  {
+    func stop() {
+        if self.observer != nil {
             underObserving = false
             CFRunLoopRemoveObserver(CFRunLoopGetMain(), self.observer, CFRunLoopMode.commonModes)
             self.observer = nil
         }
     }
     
-    private func observerCallBack() -> CFRunLoopObserverCallBack {
-        return {(observer, activity, pointer) in
+    func observerCallBack() -> CFRunLoopObserverCallBack {
+        return { _, activity, _ in
             SKANRMonitor.sharedInstance.activity = activity
             if let semaphore = SKANRMonitor.sharedInstance.semaphore {
                 semaphore.signal()
@@ -171,48 +170,40 @@ import Foundation
         }
     }
     
-    private func readDataFromDisk() {
+    func readDataFromDisk() {
         if let filePath = filePath, FileManager.default.fileExists(atPath: filePath) {
             do {
                 let data = try Data(contentsOf: URL(fileURLWithPath: filePath))
                 let entities = try PropertyListDecoder().decode([SKBacktraceEntity].self, from: data)
                 os_unfair_lock_lock(&lock)
                 pendingEntities.append(contentsOf: entities)
-                entities.forEach { e in
+                for e in entities {
                     let key = "\(e.validAddress)_\(e.validFunction)"
                     pendingEntityDict.updateValue(e, forKey: key)
                 }
                 os_unfair_lock_unlock(&lock)
-            }
-            catch {
+            } catch {
                 print("SKANRMonitor read data from disk error = \(error.localizedDescription)")
             }
         }
     }
     
-    fileprivate func logActivity(_ activity: CFRunLoopActivity) {
+    func logActivity(_ activity: CFRunLoopActivity) {
         switch activity {
         case .entry:
             print("即将进入RunLoop")
-            break
         case .beforeTimers:
             print("即将处理Timer")
-            break
         case .beforeSources:
             print("即将处理Sources")
-            break
         case .beforeWaiting:
             print("即将进入休眠")
-            break
         case .afterWaiting:
             print("从休眠中唤醒")
-            break
         case .exit:
             print("退出RunLoop")
-            break
         default:
             break
         }
     }
 }
-
